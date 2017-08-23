@@ -32,6 +32,8 @@ DOWNLOAD_DELAY = 3
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
 
+FEED_EXPORT_FIELDS = ['Title','URL', 'Address', 'Compensation', 'Employment Type']
+
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
 
@@ -89,5 +91,5 @@ DOWNLOAD_DELAY = 3
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-FEED_EXPORT_FIELDS = ['Title','URL', 'Address', 'Compensation', 'Employment Type','Description']
+
  
