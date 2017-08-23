@@ -19,15 +19,13 @@ class SoftwareJobsSpider(scrapy.Spider):
         
             yield Request(absolute_url, callback=self.parse_page, meta={'URL': absolute_url, 'Title': title, 'Address':address})
 
-def parse_page(self, response):
+    def parse_page(self, response):
         url = response.meta.get('URL')
         title = response.meta.get('Title')
         address = response.meta.get('Address')
- 
-        description = "".join(line for line in response.xpath('//*[@id="postingbody"]/text()').extract())
- 
-        compensation = response.xpath('//p[@class="attrgroup"]/span[1]/b/text()').extract_first()
-        employment_type = response.xpath('//p[@class="attrgroup"]/span[2]/b/text()').extract_first()
- 
-        yield{'URL': url, 'Title': title, 'Address':address, 'Description':description, 'Compensation':compensation, 'Employment Type':employment_type}
- 
+    
+        compensation = response.xpath('//p[@class="attrgroup"]/span/b/text()')[0].extract()
+        employment_type = response.xpath('//p[@class="attrgroup"]/span/b/text()')[1].extract()
+        
+        yield{'URL': url, 'Title': title, 'Address':address, 'Compensation':compensation, 'Employment Type':employment_type}
+    
